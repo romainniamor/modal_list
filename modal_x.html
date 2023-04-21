@@ -1,0 +1,116 @@
+DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal_X</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="modal" id="modal">
+        <i class="fas fa-exclamation-circle"></i>
+        <p class="modal-text">
+          Lorem ipsum, dolor sitam. Vitae in, iusto doloremque dicta officiis
+          solut
+        </p>
+        <i class="fas fa-close" id="close"></i>
+      </div>
+      <button id="open" class="modal-btn">Open</button>
+    </div>
+  </body>
+</html>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #ccc;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .modal {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    background: #fff;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*   gap: 20px; */
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateX(calc(100% + 25px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+  }
+
+  .modal.active {
+    transform: translateX(0);
+  }
+
+  .modal i:first-child {
+    color: red;
+    font-size: 20px;
+  }
+
+  .modal-text {
+    margin: 0;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    padding: 0 20px;
+  }
+
+  .modal i:last-child {
+    color: #ccc;
+    cursor: pointer;
+    transition: 350ms;
+  }
+
+  .modal i:last-child:hover {
+    color: #333;
+  }
+
+  .modal-btn {
+    padding: 10px 14px;
+    font-size: 18px;
+    margin: 100px auto;
+    display: block;
+    min-width: 130px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const openBtn = document.getElementById("open");
+  const toast = document.querySelector(".modal");
+  const closeBtn = document.getElementById("close");
+
+  openBtn.addEventListener("click", () => {
+    toast.classList.add("active");
+    setTimeout(() => {
+      toast.classList.remove("active");
+    }, 2000);
+  });
+
+  closeBtn.addEventListener("click", () => {
+    toast.classList.remove("active");
+  });
+</script>
