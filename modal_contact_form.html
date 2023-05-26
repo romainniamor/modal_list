@@ -16,22 +16,27 @@
     <div class="modal-container">
       <div class="overlay modal-trigger"></div>
       <div class="modal">
-        <div class="modale-bar">
+        <div class="modal-bar">
           <button class="close-modal modal-trigger">X</button>
         </div>
-        <span
-          >Envoyer moi un message ou rejoignez moi sur
+        <p></p>
+
+        <form class="contact-form">
+          <input type="email" id="email-input" placeholder="Votre Email..." />
+          <textarea
+            class="message"
+            placeholder="Votre Message..."
+            maxlength="500"
+            id="message-input"
+          ></textarea>
+          <input type="submit" value="Envoyer" />
+
           <a
             href="https://www.linkedin.com/in/romain-navoret-559480274/"
             target="_blank"
           >
-            <i class="devicon-linkedin-plain-wordmark"></i></a
-        ></span>
-
-        <form action="">
-          <input type="email" placeholder="Votre Email..." />
-          <input type="text" placeholder="Votre message..." />
-          <input type="submit" value="Envoyer" />
+            <i class="devicon-linkedin-plain-wordmark"></i
+          ></a>
         </form>
       </div>
     </div>
@@ -57,7 +62,6 @@
   }
 
   .modal-container {
-    /*display: none;*/
     visibility: hidden;
     position: fixed;
     top: 0;
@@ -89,7 +93,7 @@
     width: 95%;
     max-width: 500px;
     min-width: 300px;
-    padding: 30px;
+
     background: #fff;
     border-radius: 5px;
     position: absolute;
@@ -97,6 +101,16 @@
     left: 50%;
     transform: translate(-50%, calc(-50% - 50px));
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    overflow: hidden;
+  }
+
+  .modal-bar {
+    width: 100%;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: right;
+    padding: 3px;
+    align-items: center;
   }
 
   .modal-container.active .modal {
@@ -109,18 +123,52 @@
     border: none;
     padding: 6px 8px;
     border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     cursor: pointer;
     background: #ff365e;
     color: #fff;
-    font-size: 15px;
+    font-size: 8px;
   }
 
   .modal-container.active {
     display: block;
     visibility: visible;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap: 10px;
+  }
+
+  i {
+    font-size: 50px;
+  }
+
+  input,
+  textarea {
+    padding: 5px 15px;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid #828282;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #828282;
+  }
+
+  textarea:focus,
+  input[type="email"]:focus {
+    outline: 1.2px solid #767676;
+  }
+
+  textarea {
+    overflow: scroll;
+    height: 90px;
+    resize: none;
   }
 </style>
 
